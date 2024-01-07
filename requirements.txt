@@ -1,0 +1,4 @@
+numpy==1.26.3
+pandas==2.1.4
+scikit-learn==1.3.2
+alpaca-trade-api==3.0.2 
