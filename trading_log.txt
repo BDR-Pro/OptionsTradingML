@@ -1,0 +1,4 @@
+2024-01-08 22:03:07,464 - ERROR - Error fetching data for symbol LHC.U: 'LHC.U'
+2024-01-08 22:03:08,693 - ERROR - Error fetching data for symbol LHC.U: 'LHC.U'
+2024-01-08 22:03:09,868 - ERROR - Error fetching data for symbol LHC.U: 'LHC.U'
+2024-01-08 22:03:11,062 - ERROR - Error fetching data for symbol LHC.U: 'LHC.U'

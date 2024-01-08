@@ -60,7 +60,7 @@ def getAccountDetail():
     return response.json()
 
 def getBars(symbol, timeframe, start, end, adjustment):
-    url = f"https://data.alpaca.markets/v2/stocks/{symbol}/bars?timeframe={timeframe}&limit=1000&adjustment={adjustment}&feed=sip&sort=asc"
+    url = f"https://data.alpaca.markets/v2/stocks/{symbol}/bars?timeframe={timeframe}&limit=1000&adjustment={adjustment}&feed=sip&sort=asc&start={start}&end={end}"
     print(url)
     headers = {
         "accept": "application/json",
@@ -70,7 +70,9 @@ def getBars(symbol, timeframe, start, end, adjustment):
     
     response = requests.get(url, headers=headers)
     print(response.text)
-    return response.json()
+    if response.json()['bars']==None:
+        return None
+    return response.json() 
 
 def getQuotes(symbol, limit):
     url = f"https://data.alpaca.markets/v1/quotes/{symbol}"
@@ -227,15 +229,50 @@ def is_crossunder(data):
 
     return short_ma.iloc[-1] < long_ma.iloc[-1] and short_ma.iloc[-2] >= long_ma.iloc[-2]
 
-# Function to extract features for machine learning
-def extract_features(data):
-    print(data)
-    data['short_ma'] = data['close'].rolling(window=short_window).mean()
-    data['long_ma'] = data['close'].rolling(window=long_window).mean()
-    data['return'] = data['close'].pct_change()
-    data['volatility'] = data['return'].rolling(window=training_window).std()
-    data['target'] = np.where(data['close'].shift(-prediction_window) > data['close'], 1, 0)
-    return data.dropna()
+def extract_features(bars, short_window=10, long_window=50, training_window=20, prediction_window=5):
+    """
+    Extracts features from financial data.
+
+    Parameters:
+    - bars (list): List of bars containing financial data.
+    - short_window (int): Short moving average window.
+    - long_window (int): Long moving average window.
+    - training_window (int): Window for calculating volatility.
+    - prediction_window (int): Prediction window for target variable.
+
+    Returns:
+    - pd.DataFrame: Dataframe with extracted features.
+    """
+    try:
+        # Convert bars to DataFrame
+        data = pd.DataFrame(bars)
+
+        # Convert timestamp to datetime
+        data['t'] = pd.to_datetime(data['t'])
+
+        # Set timestamp as index
+        data.set_index('t', inplace=True)
+
+        # Compute short and long moving averages
+        data['short_ma'] = data['c'].rolling(window=short_window).mean()
+        data['long_ma'] = data['c'].rolling(window=long_window).mean()
+
+        # Calculate percentage change in 'close' prices
+        data['return'] = data['c'].pct_change()
+
+        # Compute rolling standard deviation of the percentage change
+        data['volatility'] = data['return'].rolling(window=training_window).std()
+
+        # Create binary target variable based on price movement
+        data['target'] = np.where(data['c'].shift(-prediction_window) > data['c'], 1, 0)
+
+        # Drop NaN values
+        return data.dropna()
+
+    except Exception as e:
+        print(f"An error occurred: {e}")
+        return pd.DataFrame()
+
 
 # Train the machine learning model for strategy prediction
 def train_model_for_strategy(data):
@@ -322,8 +359,11 @@ def trade():
                     # Fetch historical data for the current chunk
                     print(symbol, timeframe, current_date.strftime('%Y-%m-%d'),chunk_end_date)
                     chunk_data_response = getBars(symbol, timeframe, start=current_date.strftime('%Y-%m-%d'), end=chunk_end_date, adjustment='raw')
+                    if chunk_data_response['bars']==None or len(chunk_data_response['bars'])==0:
+                        break
                     print("Fetched",chunk_data_response)
                     chunk_data = pd.DataFrame(chunk_data_response[symbol])
+                    chunk_data.to_csv(f"companies/{symbol}.csv", mode='a', header=False, index=False)
                     print(chunk_data)
                 except Exception as e:
                     # Handle other exceptions that might occur during data fetching
@@ -397,15 +437,36 @@ def trade():
                     elif best_strategy == 'butterfly_spread' and is_butterfly_spread(current_data):
                         execute_butterfly_spread(symbol)
 
+
+def listOfSymbols():
+    try:
+        # Attempt to read symbols from the CSV file
+        symbols = pd.read_csv('assets.csv')['symbol'].tolist()
+        print("number of symbols" , len(symbols))
+        return symbols
+    except FileNotFoundError:
+        # If the file is not found, fetch symbols using getAssets
+        symbols = []
+        assets = getAssets(status='active', asset_class='us_equity')
+        for asset in assets:
+            symbols.append(asset['symbol'])
+        
+        # Write symbols to the CSV file
+        with open('assets.csv', 'w') as f:
+            f.write('symbol\n')
+            for symbol in symbols:
+                f.write(symbol + '\n')
+        
+        return symbols
+    except Exception as e:
+        # Handle other exceptions if necessary
+        print(f"An error occurred: {e}")
+        return []
+
+
 if __name__ == "__main__":
-        # Assuming getAssets returns a list of dictionaries
-    assets_list = getAssets(status='active', asset_class='us_equity')
 
-    # Extracting 'symbol' from each dictionary
-    symbols = [asset['symbol'] for asset in assets_list]
-
-    # Printing the resulting list of symbols
-    print(symbols)
+    symbols = listOfSymbols()
 
     # Main trading loop
     while True:
