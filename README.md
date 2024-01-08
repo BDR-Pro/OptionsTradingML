@@ -1,11 +1,6 @@
 # OptionsTradingML
 
 
-```diff
-+ You Should Use Google Collab Only
-
-```
-
 ## Goolge Collab Link
 
 [Google Colab Link](https://colab.research.google.com/drive/1BSyh5BE7Gwzfls4nCV1rrWlTv-9jEp5P?usp=sharing)
