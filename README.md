@@ -1,11 +1,9 @@
 # OptionsTradingML
 
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1BSyh5BE7Gwzfls4nCV1rrWlTv-9jEp5P?usp=sharing)
 
-## Goolge Collab Link
 
-[Google Colab Link](https://colab.research.google.com/drive/1BSyh5BE7Gwzfls4nCV1rrWlTv-9jEp5P?usp=sharing)
-
-## Trading Bot README
+## Trading Bot
 
 OptionsTradingML is a Python trading bot designed for options trading and utilizes machine learning algorithms to make decisions on buying and selling options contracts. The bot supports leveraged trading (up to 2x) and implements strategies such as Moving Average Crossover, Iron Condor, and Butterfly Spread.
 
