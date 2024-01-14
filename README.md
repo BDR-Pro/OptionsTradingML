@@ -1,7 +1,12 @@
+# OptionsTradingML
 
-# StockFinder: AI-Powered Stock Prediction Tool
+OptionsTradingML is a Python trading bot designed for options trading and utilizes machine learning algorithms to make decisions on buying and selling options contracts. The bot supports leveraged trading (up to 2x) and implements strategies such as Moving Average Crossover, Iron Condor, and Butterfly Spread.
 
-StockFinder is an advanced, GPT-based tool designed for stock market analysis. Leveraging the power of AI, it processes financial data to generate actionable trading signals.
+## Overview
+
+This Python trading bot is designed for options trading and utilizes machine learning algorithms to make decisions on buying and selling options contracts. The bot supports leveraged trading (up to 2x) and implements strategies such as Moving Average Crossover, Iron Condor, and Butterfly Spread.
+
+**Disclaimer: Trading involves risks, and this bot is provided for educational purposes only. Use it at your own risk, and be sure to thoroughly understand the code and trading strategies before deploying it in a live environment.**
 
 ## Features
 - **AI-Driven Market Analysis:** Utilizes GPT models for in-depth analysis of financial data, including stock prices, trends, and news.
