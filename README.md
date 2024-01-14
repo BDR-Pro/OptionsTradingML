@@ -4,10 +4,9 @@
 https://chat.openai.com/g/g-Fq4lGGQGx-stockfinder
 
 
-OptionsTradingML is a Python trading bot designed for options trading and utilizes machine learning algorithms to make decisions on buying and selling stocks
 ## Overview
 
-This Python trading bot is designed for options trading and utilizes machine learning algorithms to make decisions on buying and selling options contracts. 
+OptionsTradingML is a Python trading bot designed for options trading and utilizes machine learning algorithms to make decisions on buying and selling stocks
 
 **Disclaimer: Trading involves risks, and this bot is provided for educational purposes only. Use it at your own risk, and be sure to thoroughly understand the code and trading strategies before deploying it in a live environment.**
 
