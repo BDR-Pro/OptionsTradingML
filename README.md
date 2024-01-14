@@ -43,6 +43,38 @@ To use alpeca API:
    python main.py
    ```
 
+
+## The GPT
+
+To use "StockFinder" effectively, especially for the "Surprise Me" feature which returns a JSON object with stock symbol and expected price, follow these instructions:
+
+1. **Starting the Tool:**
+   - Launch StockFinder on your device or access it through its web interface, if available.
+
+2. **Requesting a Stock Suggestion:**
+   - In the input field or command line, type the phrase "Surprise Me". This is the command that triggers the tool's feature to provide a random yet potentially valuable stock suggestion.
+
+3. **Receiving the Output:**
+   - Upon processing your request, StockFinder will generate a JSON object. This object contains two key pieces of information:
+     - `symbol`: The ticker symbol of the suggested stock.
+     - `expectedPrice`: The AI's prediction of the stock's future price based on current market analysis.
+
+4. **Interpreting the JSON Response:**
+   - The JSON response will look something like this:
+     ```json
+     {
+       "symbol": "AAPL",
+       "expectedPrice": 150
+     }
+     ```
+   - In this example, `AAPL` is the stock symbol for Apple Inc., and `150` is the predicted price (in your local currency).
+
+5. **Using the Information:**
+   - Use the information provided by StockFinder to conduct further research or make investment decisions. Remember, the tool's suggestions are based on algorithms and should not be the sole basis for financial decisions.
+
+6. **Repeat or Refine:**
+   - You can repeat the "Surprise Me" command to get suggestions for different stocks. If StockFinder offers more refined commands or filters, use them for more targeted suggestions.
+   - 
 ## Contributing
 Contributions to StockFinder are welcome. please submitting pull requests.
 
