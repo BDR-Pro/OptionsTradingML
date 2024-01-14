@@ -1,94 +1,66 @@
-# OptionsTradingML
 
+# StockFinder: AI-Powered Stock Prediction Tool
 
-## Goolge Collab Link
-
-[Google Colab Link](https://colab.research.google.com/drive/1BSyh5BE7Gwzfls4nCV1rrWlTv-9jEp5P?usp=sharing)
-
-## Trading Bot README
-
-OptionsTradingML is a Python trading bot designed for options trading and utilizes machine learning algorithms to make decisions on buying and selling options contracts. The bot supports leveraged trading (up to 2x) and implements strategies such as Moving Average Crossover, Iron Condor, and Butterfly Spread.
-
-## Overview
-
-This Python trading bot is designed for options trading and utilizes machine learning algorithms to make decisions on buying and selling options contracts. The bot supports leveraged trading (up to 2x) and implements strategies such as Moving Average Crossover, Iron Condor, and Butterfly Spread.
-
-**Disclaimer: Trading involves risks, and this bot is provided for educational purposes only. Use it at your own risk, and be sure to thoroughly understand the code and trading strategies before deploying it in a live environment.**
+StockFinder is an advanced, GPT-based tool designed for stock market analysis. Leveraging the power of AI, it processes financial data to generate actionable trading signals.
 
 ## Features
-
-- High-frequency trading with minute-level data.
-- Machine learning models for predicting overall market strategy and choosing between Iron Condor and Butterfly Spread strategies.
-- Leveraged trading (up to 2x).
-- Implementation of Moving Average Crossover, Iron Condor, and Butterfly Spread strategies.
-- Risk management and position sizing based on account value.
+- **AI-Driven Market Analysis:** Utilizes GPT models for in-depth analysis of financial data, including stock prices, trends, and news.
+- **Trading Signal Generation:** Generates trading signals suggesting buy, sell, or hold positions.
+- **User-Friendly JSON Output:** Outputs data in a structured JSON format for ease of use and integration.
 
 ## Getting Started
 
 ### Prerequisites
-
-- Python 3.6 or later
-- [Alpaca API](https://alpaca.markets/) account (for paper trading)
+- Python 3.8+
+- Access to financial data sources (APIs, databases)
+- Pre-trained GPT model (e.g., GPT-3)
 
 ### Installation
-
-1. **Clone the repository:**
-
-   ```bash
-   git clone https://github.com/BDR-Pro/OptionsTradingML.git
-   cd OptionsTradingML
+1. Clone the repository:
    ```
-
-2. **Install dependencies:**
-
-   ```bash
-   !pip install -r requirements.txt
+   git clone [repository URL]
    ```
-
-### Configuration
-
-1. Obtain API keys from the [Alpaca dashboard](https://app.alpaca.markets/paper/dashboard/overview).
-2. Create a file named `.env` in the root directory of the project.
+2. Install required dependencies:
+   ```
+   pip install -r requirements.txt
+   ```
 
 ### Usage
+To start using StockFinder:
+1. Launch the Trading tool:
+   ```
+   python stockfinder.py
+   ```
+2. Enter the command "Surprise Me" for stock suggestions.
+3. Receive JSON formatted output with stock predictions.
 
-Run the trading bot using:
+To use alpeca API:
+   ```
+   python main.py
+   ```
 
-```bash
-python trading_bot.ipynb
-```
-
-The bot will start making high-frequency trades based on the implemented strategies and machine learning predictions.
-
-## Strategies
-
-1. **Moving Average Crossover:**
-   - Buy when the short-term moving average crosses above the long-term moving average.
-   - Sell when the short-term moving average crosses below the long-term moving average.
-
-2. **Iron Condor:**
-   - Execute the Iron Condor strategy when machine learning predicts it and specific option-related conditions are met.
-
-3. **Butterfly Spread:**
-   - Execute the Butterfly Spread strategy when machine learning predicts it and specific option-related conditions are met.
-
-## Customization
-
-Feel free to customize the bot according to your preferences. You can add more strategies, modify risk management, or enhance machine learning models based on your research.
+## Training Your Model
+Refer to the `training/` directory for scripts and instructions on how to train your model with your own data.
 
 ## Contributing
-
-Contributions are welcome! Feel free to open issues or submit pull requests to improve the functionality or fix any bugs.
+Contributions to StockFinder are welcome. please submitting pull requests.
 
 ## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the [LICENSE NAME] - see the `LICENSE.md` file for details.
 
 ## Acknowledgments
-
+- Special thanks to the team and contributors who made this project possible.
+- Hat tip to anyone whose code was used.
 - Thanks to [Alpaca](https://alpaca.markets/) for providing a powerful API for algorithmic trading.
 - Special thanks to the open-source community for various Python libraries used in this project.
 
 ## References
 
 - [Alpaca API Documentation](https://alpaca.markets/docs/api-documentation/)
+
+- [Data Science for Finance](https://www.datacamp.com/community/tutorials/finance-python-trading)
+
+- [Kaggle](kaggle.com)
+
+## Disclaimer
+Stock market prediction is risky and cannot guarantee accuracy. Use StockFinder as one of many tools in your financial decision-making process.
