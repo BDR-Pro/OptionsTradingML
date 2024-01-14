@@ -1,10 +1,9 @@
 # OptionsTradingML
 
-OptionsTradingML is a Python trading bot designed for options trading and utilizes machine learning algorithms to make decisions on buying and selling options contracts. The bot supports leveraged trading (up to 2x) and implements strategies such as Moving Average Crossover, Iron Condor, and Butterfly Spread.
-
+OptionsTradingML is a Python trading bot designed for options trading and utilizes machine learning algorithms to make decisions on buying and selling stocks
 ## Overview
 
-This Python trading bot is designed for options trading and utilizes machine learning algorithms to make decisions on buying and selling options contracts. The bot supports leveraged trading (up to 2x) and implements strategies such as Moving Average Crossover, Iron Condor, and Butterfly Spread.
+This Python trading bot is designed for options trading and utilizes machine learning algorithms to make decisions on buying and selling options contracts. 
 
 **Disclaimer: Trading involves risks, and this bot is provided for educational purposes only. Use it at your own risk, and be sure to thoroughly understand the code and trading strategies before deploying it in a live environment.**
 
@@ -15,7 +14,7 @@ This Python trading bot is designed for options trading and utilizes machine lea
 
 ## Getting Started
 
-### Prerequisites
+### Features
 - Python 3.8+
 - Access to financial data sources (APIs, databases)
 - Pre-trained GPT model (e.g., GPT-3)
@@ -23,7 +22,7 @@ This Python trading bot is designed for options trading and utilizes machine lea
 ### Installation
 1. Clone the repository:
    ```
-   git clone [repository URL]
+   git clone https://github.com/BDR-Pro/OptionsTradingML
    ```
 2. Install required dependencies:
    ```
@@ -44,14 +43,11 @@ To use alpeca API:
    python main.py
    ```
 
-## Training Your Model
-Refer to the `training/` directory for scripts and instructions on how to train your model with your own data.
-
 ## Contributing
 Contributions to StockFinder are welcome. please submitting pull requests.
 
 ## License
-This project is licensed under the [LICENSE NAME] - see the `LICENSE.md` file for details.
+This project is licensed under the [MIT License] - see the `LICENSE.md` file for details.
 
 ## Acknowledgments
 - Special thanks to the team and contributors who made this project possible.
