@@ -3,6 +3,16 @@ import requests
 import time
 import pandas as pd
 
+
+
+def save_data(data):
+    """
+    Save data to CSV
+    """
+    df = pd.DataFrame(data)
+    df.to_csv('data.csv', index=False, header=True, mode='a')
+    
+
 # Constants
 API_KEY = 'YOUR_API_KEY'
 API_SECRET = 'YOUR_API_SECRET'
@@ -50,7 +60,6 @@ with open(CSV_FILE, mode='r') as file:
         tickers.append(row[0])
 
 # Fetch data for each ticker
-data = []
 for index, ticker in enumerate(tickers):
     try:
         print(f"ticker: {ticker} No.{index+1} out of {len(tickers)}")
@@ -60,18 +69,18 @@ for index, ticker in enumerate(tickers):
         if stock_data['bars']=={}:
             continue
         if stock_data:
-            data.append(stock_data)
+            save_data(stock_data)
         if stock_data['next_page_token']:
             while stock_data['next_page_token']:
                 stock_data = fetch_stock_data(ticker, stock_data['next_page_token'])
+                print(stock_data)
                 if stock_data:
-                    data.append(stock_data)
+                    save_data(stock_data)
+                    
         time.sleep(1)  # To respect rate limits
     except Exception as e:
         print(e)
         continue
 
-# Convert to DataFrame for better visualization and manipulation
-df = pd.DataFrame(data)
-# Save the data to a new CSV file
-df.to_csv('stock_data.csv', index=False)
+
+
